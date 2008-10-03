@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def ajax_spinner_for(id, spinner="spinner.gif")
-    "<img src='/plugin_assets/savage_beast/images/#{spinner}' style='display:none; vertical-align:middle;' id='#{id.to_s}_spinner'> "
+    "<img src='/plugin_assets/aep_beast/images/#{spinner}' style='display:none; vertical-align:middle;' id='#{id.to_s}_spinner'> "
   end
 
   def avatar_for(user, size=32)
@@ -30,7 +30,7 @@ module ApplicationHelper
 
   def feed_icon_tag(title, url)
     (@feed_icons ||= []) << { :url => url, :title => title }
-    link_to image_tag('feed-icon.png', :size => '14x14', :style => 'margin-right:5px', :alt => "Subscribe to #{title}", :plugin => "savage_beast"), url
+    link_to image_tag('feed-icon.png', :size => '14x14', :style => 'margin-right:5px', :alt => "Subscribe to #{title}", :plugin => "aep_beast"), url
   end
 
   def search_posts_title
