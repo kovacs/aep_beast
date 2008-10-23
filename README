@@ -20,18 +20,9 @@ Based on Savage Beast installation procedure from http://www.williambharding.com
 8 Alternative: Make sure your ApplicationController class definition begins with
   helper :all # include all helpers, all the time
   include SavageBeast::AuthenticationSystem
-  
-  # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem # from Restful Authentication
-9. Implement feed_icon_tag and head_extras methods in your application_helper. Example:
-def feed_icon_tag(title, url)
-  (@feed_icons ||= []) << { :url => url, :title => title }
-  link_to image_tag('feed-icon.png', :size => '14x14', :style => 'margin-right:5px', :alt => "Subscribe to #{title}", :plugin => "aep_beast"), url
-end
-  
-# convenient plugin point
-def head_extras
-end
+9. Check out aep_beast/lib/savage_beast/authentication_system.rb for methods not yet implemented in your site (like admin?) and implement them in your ApplicationController. Actually admin? may be the only one of interest to you if you use restful_authentication.
+
 
   
 Required plugins 
@@ -48,9 +39,6 @@ Required gems
 mislav-will_paginate (http://github.com/mislav/will_paginate/tree/master/) (remember about adding proper line in config/environment.rb for loading the gem!)
 RedCloth (gem install RedCloth)
 
-Recommended
-=============
-Restful_authentication, but that one hardly needs recommendations
 
 TODO
 =============
