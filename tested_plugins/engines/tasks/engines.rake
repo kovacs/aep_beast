@@ -2,20 +2,22 @@
 # handy for modifying existing Rails rake tasks.
 # Credit for the original snippet of code goes to Jeremy Kemper
 # http://pastie.caboo.se/9620
-unless Rake::TaskManager.methods.include?(:redefine_task)
+unless Rake::TaskManager.methods.include?('redefine_task')
   module Rake
     module TaskManager
       def redefine_task(task_class, args, &block)
-        task_name, deps = resolve_args(args)
+        task_name, arg_names, deps = resolve_args([args])
         task_name = task_class.scope_name(@scope, task_name)
         deps = [deps] unless deps.respond_to?(:to_ary)
         deps = deps.collect {|d| d.to_s }
         task = @tasks[task_name.to_s] = task_class.new(task_name, self)
         task.application = self
-        @last_comment = nil
+        task.add_description(@last_description)
+        @last_description = nil
         task.enhance(deps, &block)
         task
       end
+      
     end
     class Task
       class << self
@@ -24,6 +26,34 @@ unless Rake::TaskManager.methods.include?(:redefine_task)
         end
       end
     end
+  end
+end
+
+namespace :db do
+  namespace :migrate do
+    desc 'Migrate database and plugins to current status.'
+    task :all => [ 'db:migrate', 'db:migrate:plugins' ]
+    
+    desc 'Migrate plugins to current status.'
+    task :plugins => :environment do
+      Engines.plugins.each do |plugin|
+        next unless File.exists? plugin.migration_directory
+        puts "Migrating plugin #{plugin.name} ..."
+        plugin.migrate
+      end
+    end
+
+    desc 'Migrate a specified plugin.'
+    task({:plugin => :environment}, :name, :version) do |task, args|
+      name = args[:name] || ENV['NAME']
+      if plugin = Engines.plugins[name]
+        version = args[:version] || ENV['VERSION']
+        puts "Migrating #{plugin.name} to " + (version ? "version #{version}" : 'latest version') + " ..."
+        plugin.migrate(version ? version.to_i : nil)
+      else
+        puts "Plugin #{name} does not exist."
+      end
+    end    
   end
 end
 

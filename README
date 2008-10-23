@@ -10,7 +10,7 @@ Based on Savage Beast installation procedure from http://www.williambharding.com
 
 1. Install required gems (see below)
 2. Install required plugins (see below) or just copy them from tested_plugins directory
-3. For the engines plugin to work, add this line to the top of your environment.rb, right after the require of boot: require File.join(File.dirname(__FILE__), ‘../vendor/plugins/engines/boot‘)
+3. For the engines plugin to work, add this line to the top of your environment.rb, right after the require of boot: require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
 4. Copy the migration in /vendor/plugins/aep_beast/db/migrate into your own migration directory (and run it)
 5. Implement in your User model the four methods in plugins/aep_beast/lib/savage_beast/user_init that are marked as "#implement in your user model"
 6. Add the line "map.from_plugin :aep_beast" to your routes.rb. Location shouldn’t matter unless you intend to override it.
@@ -19,7 +19,7 @@ Based on Savage Beast installation procedure from http://www.williambharding.com
 
 Required plugins 
 =============
-Rails Engines
+Rails Engines (http://www.rails-engines.org/download)
 white_list, white_list_formatted_content 
 acts_as_list
 gibberish (will be removed soon in favor of Rails 2.1 i18n framework)
