@@ -1,7 +1,17 @@
+Aep Beast: yet another Beast fork, by Aenima.
+
+Preface
+===========
+
+Installation
+===========
+Based on Savage Beast installation procedure from http://www.williambharding.com/blog/rails/savage-beast-20/
+
 Required plugins
 ================
-engines
+Rails Engines (included)
 
 Required gems
 =============
-mislav-will_paginate
+mislav-will_paginate (http://github.com/mislav/will_paginate/tree/master/)
+RedCloth (gem install RedCloth)
