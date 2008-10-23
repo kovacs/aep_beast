@@ -14,7 +14,7 @@ Based on Savage Beast installation procedure from http://www.williambharding.com
 3. For the engines plugin to work, add this line to the top of your environment.rb, right after the require of boot: require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
 4. Copy the migration in /vendor/plugins/aep_beast/db/migrate into your own migration directory (and run it)
 5. Implement in your User model the four methods in plugins/aep_beast/lib/savage_beast/user_init that are marked as "#implement in your user model"
-6. Add the line "map.from_plugin :aep_beast" to your routes.rb. Location shouldn’t matter unless you intend to override it.
+6. Add the line "map.from_plugin :aep_beast" to your routes.rb. Location shouldn’t matter unless you intend to override it. (but it's best to add it on the top)
 7. Add the line "include SavageBeast::UserInit" to your User model. Location shouldn’t matter unless you intend to override it.
 8. Implement versions of the methods in SavageBeast::AuthenticationSystem (located in /plugins/savage_beast/lib) in your application controller if they aren’t already there (note: technically, I believe only "login_required" and "current_user" are necessary, the others give you more functionality). Helpful commenter Adam says that if you have the "helper :all" line in your application controller, be sure to add the "SavageBeast::AuthenticationSystem" line after that.
 8 Alternative: Make sure your ApplicationController class definition begins with
