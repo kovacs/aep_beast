@@ -47,3 +47,4 @@ TODO
 - switch to liquid templating system
 - make installation quick and easy (simple rake task maybe?)
 
+Copyright (c) 2008 Aenima, released under the MIT license, based on William B. Harding's "Savage Beast" plugin
