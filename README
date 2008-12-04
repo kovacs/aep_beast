@@ -2,7 +2,7 @@ Aep Beast: yet another Savage Beast fork, by Aenima.
 
 Preface
 ===========
-Savage Beast is (was) way cool, but has (had) some compatibility issues with Rails 2.1 and used some outdated plugins: will_paginate and gibberish for translation. Besides that its HTML and CSS left some to be desired. It's still some great code though, so we decided to fork it and correct aforementioned shortcomings.
+Savage Beast is (was) way cool, but has (had) some compatibility issues with Rails 2.1 (and above) and used some outdated plugins: will_paginate and gibberish for translation. Besides that its HTML and CSS left some to be desired. It's still some great code though, so we decided to fork it and correct aforementioned shortcomings.
 
 Installation
 ===========
@@ -30,7 +30,7 @@ Required plugins
 Rails Engines (http://www.rails-engines.org/download)
 white_list, white_list_formatted_content 
 acts_as_list
-gibberish (will be removed soon in favor of Rails 2.1 i18n framework)
+gibberish (will be removed soon in favor of Rails 2.2 i18n framework)
 
 All of the above plugins are included in tested and working versions in tested_plugins directory.
 
@@ -42,7 +42,7 @@ RedCloth (gem install RedCloth)
 
 TODO
 =============
-- drop gibberish in favor of Rails 2.1 i18n framework
+- drop gibberish in favor of Rails 2.2 i18n framework
 - correct html and css
 - switch to liquid templating system
 - make installation quick and easy (simple rake task maybe?)
